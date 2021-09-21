@@ -64,7 +64,7 @@
                                                         </div>
                                                         <div class="form-button-action">
                                                             <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-success" data-original-title="Update Email">
-                                                                <i class="fa fa-edit"></i>
+                                                                <i class="fas fa-envelope"></i>
                                                             </a>
                                                         </div>
                                                     </td>
