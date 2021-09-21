@@ -1,0 +1,25 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\NamaUjian;
+
+class NamaUjianSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        NamaUjian::create([
+            'NamaUjian' => 'SEMPROP',
+        ]);
+
+        NamaUjian::create([
+            'NamaUjian' => 'PENDADARAN',
+        ]);
+    }
+}
