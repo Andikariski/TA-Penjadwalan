@@ -39,7 +39,7 @@
                                                 <th width="15%">NIY / NIP</th>
                                                 <th width="35%">Nama</th>
                                                 <th width="20%">Jumlah mahasiswa bimbingan</th>
-                                                <th width= 10%>Action</th>
+                                                <th width= 15%>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -62,6 +62,11 @@
                                                                 <i class="fa fa-eye"></i>
                                                             </a>
                                                         </div>
+                                                        <div class="form-button-action">
+                                                            <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-success" data-original-title="Update Email">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @empty
@@ -75,8 +80,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-
-
 
                                  <!-- Modal -->
                                  <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
