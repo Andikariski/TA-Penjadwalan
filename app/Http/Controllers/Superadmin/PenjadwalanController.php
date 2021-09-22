@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Superadmin;
 
+use App\Models\Topikskripsi;
 use App\Helpers\NilaiMahasiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Helpers\Calendar;
 use Illuminate\Http\Request;
-use App\Models\Topikskripsi;
 use App\Models\Mahasiswa;
 use App\Models\NilaiPendadaran;
 use App\Models\NilaiSemprop;
@@ -22,7 +22,7 @@ use Carbon\Carbon;
 use App\Mail\EmailJadwalUjian;
 use App\Models\GoogleMeet;
 use Illuminate\Support\Facades\Mail as FacadesMail;
-use View;
+use Illuminate\Contracts\View\View;
 
 
 class PenjadwalanController extends Controller
