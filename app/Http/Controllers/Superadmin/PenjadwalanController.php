@@ -756,8 +756,8 @@ class PenjadwalanController extends Controller
 
         $this->simpanJadwalDosenTerdaftar($nipyDosenPembimbing, $nipyDosenPenguji1, $nipyDosenPenguji2, $data);
 
-        // $this->sendCalendarEvent($data);
-        // $this->sendMailNotificationSchedule($data);
+        $this->sendCalendarEvent($data);
+        $this->sendMailNotificationSchedule($data);
 
         return redirect('dataPenjadwalan')->with('alert-success', 'Jadwal Berhasil Diubah');
     }
