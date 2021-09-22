@@ -23,6 +23,7 @@ use App\Mail\EmailJadwalUjian;
 use App\Models\GoogleMeet;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 
+
 class PenjadwalanController extends Controller
 {
     // Function untuk menampilkan data mahasiswa metopen dan skripsi include filter status mahasiswa
@@ -539,7 +540,7 @@ class PenjadwalanController extends Controller
         }
         $data = $dataPenjadwalan->get();
 
-        return view('pages.superadmin.penjadwalan.dataPenjadwalan', ['page' => 'Data Penjadwalan'], compact('data', 'status_ujian', 'filter'));
+        return \view('pages.superadmin.penjadwalan.dataPenjadwalan', ['page' => 'Data Penjadwalan'], compact('data', 'status_ujian', 'filter'));
     }
 
     #Function untuk menampilkan data penjadwalan secara detail
