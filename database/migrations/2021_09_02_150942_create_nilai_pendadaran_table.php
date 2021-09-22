@@ -16,11 +16,13 @@ class CreateNilaiPendadaranTable extends Migration
         Schema::create('nilai_pendadaran', function (Blueprint $table) {
             $table->id();
             $table->integer('id_subPertanyaanPendadaran');
-            $table->integer('id_penjadwalan');
+            $table->unsignedBigInteger('id_penjadwalan')->nullable();
             $table->string('nipy', 20);
-            $table->enum('option', ['pembimbing', 'penguji1','penguji2']);
+            $table->enum('option', ['pembimbing', 'penguji1', 'penguji2']);
             $table->integer('nilai');
             $table->timestamps();
+
+            $table->foreign('id_penjadwalan')->references('id')->on('penjadwalan')->onDelete('cascade');
         });
     }
 

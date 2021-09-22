@@ -109,6 +109,8 @@ Route::middleware(['auth', 'role:super_admin'])->group(function () {
 
         //Route untuk Testing
         Route::get('tesFungsi', [Superadmin\PenjadwalanController::class, 'jadwalPendadaranById']);
+
+        Route::post('updateEmail/{id}', [Superadmin\DosenController::class, 'updateEmailDosen'])->name('updateEmail');
 });
 
 Route::get('/google/auth', function () {

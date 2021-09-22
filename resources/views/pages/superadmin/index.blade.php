@@ -37,9 +37,10 @@
                                             <tr>
                                                 <th width="5%">Nomor</th>
                                                 <th width="15%">NIY / NIP</th>
-                                                <th width="35%">Nama</th>
-                                                <th width="20%">Jumlah mahasiswa bimbingan</th>
-                                                <th width= 15%>Action</th>
+                                                <th width="25%">Nama</th>
+                                                <th width="20%">Email</th>
+                                                <th width="15%">Jumlah mahasiswa bimbingan</th>
+                                                <th width= 25%>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -48,6 +49,7 @@
                                                     <th>{{$loop->iteration}}</th>
                                                     <td>{{ $item->nipy}}</td>
                                                     <td>{{ $item->user->name}}</td>
+                                                    <td>{{ $item->user->email}}</td>
                                                     <td>
                                                         @if ($item->skripsi->count()==0)
                                                             <span class="badge badge-danger">Tidak ada</span>
@@ -63,9 +65,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="form-button-action">
-                                                            <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-success" data-original-title="Update Email">
-                                                                <i class="fas fa-envelope"></i>
-                                                            </a>
+                                                           <a href="" type="button" class="btn-link btn-success" data-toggle="modal" data-target="#editModal{{$item->user_id}}"> <i class="fas fa-envelope"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -82,56 +82,44 @@
                                 </div>
 
                                  <!-- Modal -->
-                                 <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                 @foreach ($dosen as $item)                                 
+                                 <div class="modal fade" id="editModal{{ $item->user_id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header no-bd">
-                                                <h5 class="modal-title">
-                                                    <span class="fw-mediumbold">
-                                                    New</span> 
-                                                    <span class="fw-light">
-                                                        Row
-                                                    </span>
-                                                </h5>
+                                                <h5>Update Email</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p class="small">Create a new row using this form, make sure you fill them all</p>
-                                                <form>
+                                                <form action="{{ route('updateEmail',$item->user_id) }}" method="POST">
+                                                    @csrf
+                                                    @method('POST')
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <div class="form-group form-group-default">
-                                                                <label>Name</label>
-                                                                <input id="addName" type="text" class="form-control" placeholder="fill name">
+                                                                <h5><strong>{{ $item->user->name }}</strong></h5>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 pr-0">
+                                                        <div class="col-sm-12">
                                                             <div class="form-group form-group-default">
-                                                                <label>Position</label>
-                                                                <input id="addPosition" type="text" class="form-control" placeholder="fill position">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group form-group-default">
-                                                                <label>Office</label>
-                                                                <input id="addOffice" type="text" class="form-control" placeholder="fill office">
+                                                                <label>Email</label>
+                                                                <input type="text" name="email" class="form-control" placeholder="fill position" value="{{ $item->user->email }}">
+                                                                <input type="hidden" name="user_id" class="form-control" placeholder="fill position" value="{{ $item->user_id }}">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer no-bd">
-                                                <button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            </div>
+                                                </div>
+                                                <div class="modal-footer no-bd">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-
-
-
+                                @endforeach
 
                             </div>
                         </div>

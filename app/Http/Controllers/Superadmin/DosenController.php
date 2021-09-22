@@ -9,6 +9,7 @@ use App\Models\JadwalDosen;
 use App\Models\Topikskripsi;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ImpotrJadwalDosen;
+use App\Models\User;
 use Illuminate\Support\Arr;
 
 class DosenController extends Controller
@@ -187,5 +188,15 @@ class DosenController extends Controller
         $nipyDosen = $dataDosen->nipy;
         $collection = JadwalDosen::where('nipy', $nipyDosen)->get();
         return view('pages.superadmin.JadwalDosen.updateJadwalDosen', ['page' => 'Update Jadwal '], compact('dataDosen', 'collection'));
+    }
+
+    public function updateEmailDosen(Request $request)
+    {
+        $dataAsli = User::find($request->user_id);
+        $dataAsli->update([
+            'email' => $request->email
+        ]);
+
+        return redirect('/dosen')->with('alert-success', 'Email Berhasil Diubah');
     }
 }
