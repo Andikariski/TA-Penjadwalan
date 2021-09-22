@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Superadmin;
 
-use App\Models\TopikSkripsi;
+use App\Models\Topikskripsi;
 use App\Helpers\NilaiMahasiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;

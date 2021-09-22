@@ -16,7 +16,7 @@ class Penjadwalan extends Model
 
     public function topikSkripsi()
     {
-        return $this->belongsTo(TopikSkripsi::class, 'topik_skripsi_id');
+        return $this->belongsTo(Topikskripsi::class, 'topik_skripsi_id');
     }
 
     public function linkGoogleMeet()
