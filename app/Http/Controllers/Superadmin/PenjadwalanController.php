@@ -22,7 +22,8 @@ use Carbon\Carbon;
 use App\Mail\EmailJadwalUjian;
 use App\Models\GoogleMeet;
 use Illuminate\Support\Facades\Mail as FacadesMail;
-use Illuminate\Contracts\View\View;
+// use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\View;
 
 
 class PenjadwalanController extends Controller
@@ -541,7 +542,7 @@ class PenjadwalanController extends Controller
         }
         $data = $dataPenjadwalan->get();
 
-        return \view('pages.superadmin.penjadwalan.dataPenjadwalan', ['page' => 'Data Penjadwalan'], compact('data', 'status_ujian', 'filter'));
+        return view('pages.superadmin.penjadwalan.dataPenjadwalan', ['page' => 'Data Penjadwalan'], compact('data', 'status_ujian', 'filter'));
     }
 
     #Function untuk menampilkan data penjadwalan secara detail
