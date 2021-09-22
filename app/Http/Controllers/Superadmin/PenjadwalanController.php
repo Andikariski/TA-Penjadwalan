@@ -22,8 +22,7 @@ use Carbon\Carbon;
 use App\Mail\EmailJadwalUjian;
 use App\Models\GoogleMeet;
 use Illuminate\Support\Facades\Mail as FacadesMail;
-// use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\View;
+use View;
 
 
 class PenjadwalanController extends Controller
