@@ -100,38 +100,38 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Dosen Pembimbing</label>
                                         <input type="text"   value="{{ $data->dosen->user->name  }}" class="form-control"   readonly name="dosen_pembimbing">
                                         <input type="hidden"   value="{{ $data->dosen->nipy }}" class="form-control"   readonly name="nipyDosenPembimbing">
                                         </div>
                                     </div>
-                                <div class="col">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label>Dosen Penguji 1</label>
                                         <input type="text"   value="{{ $data->dosenPenguji1->user->name  }}" class="form-control"   readonly name="dosen_penguji1">
                                         <input type="hidden"   value="{{ $data->dosenPenguji1->nipy }}" class="form-control"   readonly name="nipyDosenPenguji1">
                                         </div>
+                                        
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col"> 
+                                <div class="col-4"> 
                                     <div class="form-group">
                                         <label>Dosen Penguji 2</label>
                                         <input type="text"   value="{{ $data->dosenPenguji2->user->name }}" class="form-control"   readonly name="dosen_penguji2">
                                         <input type="hidden"   value="{{ $data->dosenPenguji2->nipy }}" class="form-control"   readonly name="nipyDosenPenguji2">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                               
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Tanggal Dijadwalkan</label>
                                         <input type="text" id="Tanggaldijadwalkan" name="date"  value="" class="form-control" readonly>
                                     </div>
                                 </div>
-                            </div>
-        
-                            <div class="row">
+
                                 <div class="col">
                                     <div class="form-group">
                                         <label>Jam Mulai</label>

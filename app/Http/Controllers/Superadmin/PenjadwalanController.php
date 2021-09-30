@@ -21,6 +21,7 @@ use phpDocumentor\Reflection\Types\Null_;
 use Carbon\Carbon;
 use App\Mail\EmailJadwalUjian;
 use App\Models\GoogleMeet;
+use Google\Service\AnalyticsData\OrderBy;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 use View;
 
@@ -31,14 +32,17 @@ class PenjadwalanController extends Controller
     public function dataMahasiswa(Request $request)
     {
         $statusMahasiswa = [
-            '0' => 'On Progres Metopen',
+            // '0' => 'On Progres Metopen',
             '1' => 'Ready to Schedule Semprop',
-            '2' => 'On Progres Skripsi',
+            // '2' => 'On Progres Skripsi',
             '3' => 'Ready to Schedule Pendadaran'
         ];
+
         $topikSkripsi = Topikskripsi::where('status', 'Accept')
             ->whereNotNull('dosen_penguji_1')
             ->whereNotNull('dosen_penguji_2')
+            ->Where('status_mahasiswa', 1)
+            ->orWhere('status_mahasiswa', 3)
             ->orderBy('id', 'desc');
         $filter = $request->get('filter' ?? '');
 
@@ -598,7 +602,14 @@ class PenjadwalanController extends Controller
         $hasilNilaiPenguji2     = $hitungPenguji2->nilaiPendadaran($countArrPenguji2, $nilaiPenguji2Pendadaran, $bobotNilai) * 0.25;
 
         $totalNilaiPendadaran = $hasilNilaiPembimbing + $hasilNilaiPenguji1 + $hasilNilaiPenguji2;
-        return view('pages.superadmin.penjadwalan.detailDataPenjadwalan', ['page' => 'Detail Penjadwalan'], compact('data', 'totalNilaiPendadaran', 'totalNilaiSempro'));
+
+        // $id = 23;
+        // $countNilaiDosen = NilaiPendadaran::where('id_penjadwalan', $id);
+        $DosenPenilai = NilaiPendadaran::all()->where('id_penjadwalan', $id)->groupBy('nipy');
+        $countDosenPenilai = count($DosenPenilai);
+
+        // dd(count($countNilaiDosen));
+        return view('pages.superadmin.penjadwalan.detailDataPenjadwalan', ['page' => 'Detail Penjadwalan'], compact('data', 'totalNilaiPendadaran', 'totalNilaiSempro', 'countDosenPenilai'));
     }
 
     #Function untuk menghapus data yang telah di jadwalkan
@@ -758,8 +769,8 @@ class PenjadwalanController extends Controller
 
         $this->simpanJadwalDosenTerdaftar($nipyDosenPembimbing, $nipyDosenPenguji1, $nipyDosenPenguji2, $data);
 
-        $this->sendCalendarEvent($data);
-        $this->sendMailNotificationSchedule($data);
+        // $this->sendCalendarEvent($data);
+        // $this->sendMailNotificationSchedule($data);
 
         return redirect('dataPenjadwalan')->with('alert-success', 'Jadwal Berhasil Diubah');
     }

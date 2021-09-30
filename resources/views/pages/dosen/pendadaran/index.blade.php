@@ -104,7 +104,7 @@
                                                             @if (!strtotime(date('Y-m-d')) < strtotime($item->penjadwalan->date))
                                                                 <a href="{{ url('/penilaian-pendadaran/'.$item->id) }}"
                                                                     class="btn btn-primary btn-sm mt-2
-                                                                    {{ in_array($item->penjadwalan->id ?? null,Auth::user()->dosen->dosentoPendadaran->pluck('id_penjadwalan')->toArray() ?? []) ? 'disabled' : ''}}">
+                                                                    {{ in_array($item->penjadwalan->id ?? null,Auth::user()->dosen->dosentoPendadaran->pluck('id_penjadwalan')->toArray() ?? []) ? 'disabled': ''}}">
                                                                     <i class="fas fa-edit"></i> Penilaian Pendadaran
                                                                 </a>
                                                             @else

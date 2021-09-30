@@ -160,7 +160,7 @@
                                                     @if ($totalNilaiPendadaran)
                                                         {{ $totalNilaiPendadaran }}                                                                                                                                                
                                                     @else
-                                                    <strong style="color: red">Belum diinput</strong>
+                                                    <small style="color: red">Belum diinput</small>   
                                                     @endif
                                                 @endif                                               
                                             </div>
@@ -192,8 +192,10 @@
                                                         @elseif ($totalNilaiSempro <=0)
                                                             <strong style="color: red">Belum diinput</strong>
                                                         @endif                                                
-                                                    @elseif ($data->jenis_ujian == 1)                                            
-                                                        @if ($totalNilaiPendadaran >= 80.00)
+                                                    @elseif ($data->jenis_ujian == 1)
+                                                        @if($countDosenPenilai <3)
+                                                            <small style="color: red">Menunggu Nilai dari dosen pembimbing & Penguji</small>                                                                         
+                                                        @elseif ($totalNilaiPendadaran >= 80.00)
                                                             <strong style="color: green">A</strong>
                                                         @elseif ($totalNilaiPendadaran >= 76.25 && $totalNilaiPendadaran <= 79.99)
                                                             <strong style="color: green">A-</strong>
@@ -212,7 +214,7 @@
                                                         @elseif ($totalNilaiPendadaran < 51.25 && $totalNilaiPendadaran >0)
                                                             <strong style="color: red">Mengulang</strong>
                                                         @elseif ($totalNilaiPendadaran <=0)
-                                                            <strong style="color: red">Belum diinput</strong>
+                                                            <small style="color: red">Belum diinput</small>   
                                                         @endif                                                                                                  
                                                 @endif                                               
                                             </div>
